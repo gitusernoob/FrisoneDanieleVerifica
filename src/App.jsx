@@ -35,8 +35,13 @@ function App() {
           className="border-black border-2 p-2 rounded"
           value={email}
           onChange={event => {
-            const email = event.target.value;
-            setEmail(email);
+            setEmail(event.target.value);
+            setUser(prevState => {
+              return {
+                ...prevState,
+                email: event.target.value
+              };
+            });
           }}
         />
         <h1>{email}</h1>

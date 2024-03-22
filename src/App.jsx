@@ -9,7 +9,7 @@ function App() {
     name: "ospite",
     email: "example@test.com"
   });
-  console.log(user);
+
   return (
     <>
       <Header title="My App" />

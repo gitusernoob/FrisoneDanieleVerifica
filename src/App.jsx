@@ -3,48 +3,58 @@ import { useState } from "react";
 import Header from "./components/Header";
 
 function App() {
-  const [name, setName] = useState("ospite");
-  const [email, setEmail] = useState("example@test.com");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [user, setUser] = useState({
-    name: "ospite",
-    email: "example@test.com"
+    email: "",
+    password: ""
   });
+
+  console.log(user);
 
   return (
     <>
       <Header title="My App" />
-      <div className="flex flex-col justify-center items-center mt-3">
-        <input
-          type="text"
-          value={name}
-          className="border-black border-2 p-2 rounded"
-          onChange={event => {
-            const newName = event.target.value;
-            setName(newName);
-            setUser(prevState => {
-              return {
-                ...prevState,
-                name: newName
-              };
-            });
-          }}
-        />
-        <h1>{name}</h1>
-        <input
-          type="email"
-          className="border-black border-2 p-2 rounded"
-          value={email}
-          onChange={event => {
-            setEmail(event.target.value);
-            setUser(prevState => {
-              return {
-                ...prevState,
-                email: event.target.value
-              };
-            });
-          }}
-        />
-        <h1>{email}</h1>
+      <div className="flex justify-center items-center">
+        <div
+          className="w-2/6 flex flex-col justify-center items-center mt-5 space-y-3 py-5 px-6 rounded-lg"
+          style={{ boxShadow: "14px 5px 70px 6px rgba(0,0,0,0.1)" }}>
+          <h1 className="text-2xl">Login</h1>
+          <div className="w-full">
+            <input
+              type="email"
+              value={email}
+              placeholder="example@test.com"
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-dark-green"
+              onChange={event => {
+                setEmail(event.target.value);
+                setUser(prevState => {
+                  return {
+                    ...prevState,
+                    email: event.target.value
+                  };
+                });
+              }}
+            />
+          </div>
+          <div className="w-full">
+            <input
+              type="password"
+              value={password}
+              placeholder="password"
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-dark-green"
+              onChange={event => {
+                setPassword(event.target.value);
+                setUser(prevState => {
+                  return {
+                    ...prevState,
+                    password: event.target.value
+                  };
+                });
+              }}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

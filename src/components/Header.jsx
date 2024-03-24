@@ -1,13 +1,12 @@
 import { CiLogin as Login } from "react-icons/ci";
 
 function Header({ title }) {
-  // const {title} = props;
   return (
-    <header className="flex justify-between items-center bg-green-400 h-16">
-      <div className="w-full flex justify-end items-center">
+    <header className="flex justify-between items-center bg-dark-green h-16">
+      <div className="w-full flex justify-center items-center relative">
         <h1 className="text-4xl text-white text-center">{title}</h1>
-        <div className=" w-1/2 flex justify-end items-center">
-          <button className="text-4xl text-white py-2 px-4 rounded mr-3">
+        <div className="absolute right-0">
+          <button className="text-4xl text-white py-2 px-4 rounded">
             <Login />
           </button>
         </div>

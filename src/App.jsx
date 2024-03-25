@@ -70,7 +70,6 @@ function App() {
               {passwordInputType === "text" ? <HidePassword /> : <ShowPassword />}
             </span>
           </div>
-          <button onClick={changePasswordInputType}>change password type</button>
         </div>
       </div>
     </>

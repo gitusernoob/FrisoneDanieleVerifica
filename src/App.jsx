@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { IoEyeSharp as ShowPassword } from "react-icons/io5";
+import { FaEyeSlash as HidePassword } from "react-icons/fa6";
 
 import Header from "./components/Header";
 
@@ -9,8 +11,17 @@ function App() {
     email: "",
     password: ""
   });
+  const [passwordInputType, setPasswordInputType] = useState("password");
 
   console.log(user);
+
+  function changePasswordInputType() {
+    if (passwordInputType === "text") {
+      setPasswordInputType("password");
+    } else {
+      setPasswordInputType("text");
+    }
+  }
 
   return (
     <>
@@ -20,6 +31,7 @@ function App() {
           className="w-2/6 flex flex-col justify-center items-center mt-5 space-y-3 py-5 px-6 rounded-lg"
           style={{ boxShadow: "14px 5px 70px 6px rgba(0,0,0,0.1)" }}>
           <h1 className="text-2xl">Login</h1>
+          <hr className="h-1 w-32 bg-dark-green" />
           <div className="w-full">
             <input
               type="email"
@@ -37,9 +49,10 @@ function App() {
               }}
             />
           </div>
+          {/* password div */}
           <div className="w-full">
             <input
-              type="password"
+              type={passwordInputType}
               value={password}
               placeholder="password"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-dark-green"
@@ -54,6 +67,7 @@ function App() {
               }}
             />
           </div>
+          <button onClick={changePasswordInputType}>change password type</button>
         </div>
       </div>
     </>

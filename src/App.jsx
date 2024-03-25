@@ -3,6 +3,7 @@ import { IoEyeSharp as ShowPassword } from "react-icons/io5";
 import { FaEyeSlash as HidePassword } from "react-icons/fa6";
 
 import Header from "./components/Header";
+import Button from "./components/Button";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -70,9 +71,7 @@ function App() {
               {passwordInputType === "text" ? <HidePassword /> : <ShowPassword />}
             </span>
           </div>
-          <div className="w-full">
-            <button className="w-full text-white bg-dark-green py-2 px-4 rounded">Login</button>
-          </div>
+          <Button title="Login" />
         </div>
       </div>
     </>

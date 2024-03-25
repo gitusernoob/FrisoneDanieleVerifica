@@ -50,7 +50,7 @@ function App() {
             />
           </div>
           {/* password div */}
-          <div className="w-full">
+          <div className="w-full flex relative">
             <input
               type={passwordInputType}
               value={password}
@@ -66,6 +66,9 @@ function App() {
                 });
               }}
             />
+            <span className="absolute right-3 top-3.5 cursor-pointer" onClick={changePasswordInputType}>
+              {passwordInputType === "text" ? <HidePassword /> : <ShowPassword />}
+            </span>
           </div>
           <button onClick={changePasswordInputType}>change password type</button>
         </div>

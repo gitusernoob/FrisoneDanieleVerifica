@@ -28,7 +28,7 @@ function Login() {
 
   return (
     <div>
-      <Header title="My App" />
+      <Header title="Login" />
       <Card>
         <h1 className="text-2xl">Login</h1>
         <hr className="h-1 w-32 bg-dark-green" />

@@ -32,8 +32,9 @@ function App() {
       <Card>
         <h1 className="text-2xl">Login</h1>
         <hr className="h-1 w-32 bg-dark-green" />
+        {/* email div */}
         <div className="w-full">
-          <Input type="email" placeholder="example@test.com" value={email} />
+          <Input type="email" placeholder="example@test.com" value={email} onChange={event => setEmail(event.target.value)} />
         </div>
         {/* password div */}
         <div className="w-full flex relative">
@@ -42,6 +43,7 @@ function App() {
             {passwordInputType === "text" ? <HidePassword /> : <ShowPassword />}
           </span>
         </div>
+        {/* Button div */}
         <div className="w-full">
           <Button title="Login" />
         </div>

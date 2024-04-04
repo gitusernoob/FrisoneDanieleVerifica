@@ -13,7 +13,7 @@ function Input({ type, value, placeholder, onChange }) {
 }
 
 Input.propTypes = {
-  type: "text",
+  type: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired
 };

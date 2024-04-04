@@ -2,10 +2,10 @@ import { useState } from "react";
 import { IoEyeSharp as ShowPassword } from "react-icons/io5";
 import { FaEyeSlash as HidePassword } from "react-icons/fa6";
 
-import Header from "./components/Header";
-import Button from "./components/Button";
-import Card from "./components/Card";
-import Input from "./components/Input";
+import Header from "../components/Header";
+import Button from "../components/Button";
+import Card from "../components/Card";
+import Input from "../components/Input";
 
 function Login() {
   const [email, setEmail] = useState("");

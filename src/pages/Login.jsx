@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IoEyeSharp as ShowPassword } from "react-icons/io5";
 import { FaEyeSlash as HidePassword } from "react-icons/fa6";
+import { LuLayoutDashboard as DashboardIcon } from "react-icons/lu";
 
 import Header from "../components/Header";
 import Button from "../components/Button";
@@ -28,7 +29,7 @@ function Login() {
 
   return (
     <div>
-      <Header title="Login" />
+      <Header title="Login" icon={<DashboardIcon />} />
       <Card>
         <h1 className="text-2xl">Login</h1>
         <hr className="h-1 w-32 bg-dark-green" />

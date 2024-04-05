@@ -11,13 +11,7 @@ import Input from "../components/Input";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState({
-    email: "",
-    password: ""
-  });
   const [passwordInputType, setPasswordInputType] = useState("password");
-
-  console.log(user);
 
   function changePasswordInputType() {
     if (passwordInputType === "text") {
@@ -25,6 +19,10 @@ function Login() {
     } else {
       setPasswordInputType("text");
     }
+  }
+
+  function handlePasswordChange(event) {
+    setPassword(event.target.value);
   }
 
   return (
@@ -39,7 +37,7 @@ function Login() {
         </div>
         {/* password div */}
         <div className="w-full flex relative">
-          <Input type="password" placeholder="password" value={password} />
+          <Input type={passwordInputType} placeholder="password" value={password} onChange={handlePasswordChange} />
           <span className="absolute right-3 top-3.5 cursor-pointer" onClick={changePasswordInputType}>
             {passwordInputType === "text" ? <HidePassword /> : <ShowPassword />}
           </span>

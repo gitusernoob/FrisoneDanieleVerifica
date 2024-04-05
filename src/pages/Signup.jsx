@@ -1,5 +1,8 @@
+import Header from "../components/Header";
+import { LuLayoutDashboard as DashboardIcon } from "react-icons/lu";
+
 function Signup() {
-  return <div>Sign up</div>;
+  return <Header title="Signup" icon={<DashboardIcon />} to="/" />;
 }
 
 export default Signup;

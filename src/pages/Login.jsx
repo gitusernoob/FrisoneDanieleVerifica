@@ -27,7 +27,7 @@ function Login() {
 
   return (
     <div>
-      <Header title="Login" icon={<DashboardIcon />} />
+      <Header title="Login" icon={<DashboardIcon />} to="/dashboard" />
       <Card>
         <h1 className="text-2xl">Login</h1>
         <hr className="h-1 w-32 bg-dark-green" />

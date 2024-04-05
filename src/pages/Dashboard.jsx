@@ -4,7 +4,7 @@ import { CiLogin as Login } from "react-icons/ci";
 function Dashboard() {
   return (
     <>
-      <Header title="Dashbaord" icon={<Login />} />
+      <Header title="Dashbaord" icon={<Login />} to="/login" />
     </>
   );
 }

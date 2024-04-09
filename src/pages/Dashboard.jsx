@@ -13,9 +13,14 @@ function Dashboard() {
     priorita: ""
   });
 
-  const onChange = e => {
-    console.log(e.target.value);
+  const onChange = (e, key) => {
+    setTodo({
+      ...todo,
+      [key]: e.target.value
+    });
   };
+
+  console.log(todo);
 
   return (
     <>
@@ -31,7 +36,8 @@ function Dashboard() {
       </Card>
       <div className="w-full flex justify-center items-center mt-5">
         <div className="w-2/6">
-          <Input type="text" placeholder="Inserisci il task" value={todo.titolo} onChange={onChange} />
+          <Input type="text" placeholder="Inserisci il task" value={todo.titolo} onChange={e => onChange(e, "titolo")} />
+          <Input type="date" placeholder="Inserisci la data di scadenza" value={todo.dataDiScadenza} onChange={e => onChange(e, "dataDiScadenza")} />
         </div>
       </div>
     </>

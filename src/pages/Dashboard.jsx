@@ -20,6 +20,17 @@ function Dashboard() {
     dataDiScadenza: "",
     priorita: ""
   });
+  const [disabled, setDisabled] = useState(true);
+
+  const formController = todo => {
+    if (todo.titolo !== "" && todo.dataDiScadenza !== "" && todo.priorita !== "") {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  };
+
+  console.log(disabled);
 
   const onChange = (event, key) => {
     // const value = event.target !== undefiend ? event.target.value : event.value;
@@ -35,11 +46,24 @@ function Dashboard() {
       ...todo,
       [key]: value
     });
+
+    formController({
+      ...todo,
+      [key]: value
+    });
   };
 
   function onClick() {
-    console.log(todo);
+    setTodos([...todos, todo]);
+    setTodo({
+      titolo: "",
+      dataDiScadenza: "",
+      priorita: ""
+    });
   }
+
+  console.log(todos);
+  console.log(todo);
 
   return (
     <>
@@ -57,8 +81,8 @@ function Dashboard() {
         <div className="w-2/6">
           <Input type="text" placeholder="Inserisci il task" value={todo.titolo} onChange={e => onChange(e, "titolo")} />
           <Input type="date" placeholder="Inserisci la data di scadenza" value={todo.dataDiScadenza} onChange={e => onChange(e, "dataDiScadenza")} />
-          <Select options={options} placeholder="Scegli la priorita" className="mt-2" onChange={e => onChange(e, "priorita")} />
-          <Button title="Submit" onClick={onClick} />
+          <Select options={options} placeholder="Scegli la priorita" className="mt-2" onChange={e => onChange(e, "priorita")} isClearable={true} />
+          <Button title="Submit" onClick={onClick} disabled={disabled} />
         </div>
       </div>
     </>

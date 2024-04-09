@@ -5,6 +5,7 @@ import Select from "react-select";
 import Header from "../components/Header";
 import Card from "../components/Card";
 import Input from "../components/Input";
+import Button from "../components/Button";
 
 const options = [
   { value: "ALTA", label: "Alta" },
@@ -36,7 +37,9 @@ function Dashboard() {
     });
   };
 
-  console.log(todo);
+  function onClick() {
+    console.log(todo);
+  }
 
   return (
     <>
@@ -55,6 +58,7 @@ function Dashboard() {
           <Input type="text" placeholder="Inserisci il task" value={todo.titolo} onChange={e => onChange(e, "titolo")} />
           <Input type="date" placeholder="Inserisci la data di scadenza" value={todo.dataDiScadenza} onChange={e => onChange(e, "dataDiScadenza")} />
           <Select options={options} placeholder="Scegli la priorita" className="mt-2" onChange={e => onChange(e, "priorita")} />
+          <Button title="Submit" onClick={onClick} />
         </div>
       </div>
     </>

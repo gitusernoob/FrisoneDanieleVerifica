@@ -18,7 +18,8 @@ function Dashboard() {
   const [todo, setTodo] = useState({
     titolo: "",
     dataDiScadenza: "",
-    priorita: ""
+    priorita: "",
+    completato: false
   });
   const [disabled, setDisabled] = useState(true);
 
@@ -62,8 +63,16 @@ function Dashboard() {
     });
   }
 
-  console.log(todos);
-  console.log(todo);
+  let todosTitles = null;
+  if (Array.isArray(todos) && todos.length > 0) {
+    todosTitles = todos.map(todo => {
+      return (
+        <Card>
+          <h1>{todo.titolo}</h1>
+        </Card>
+      );
+    });
+  }
 
   return (
     <>
@@ -77,6 +86,7 @@ function Dashboard() {
           <div>{todos.length}</div>
         </div>
       </Card>
+      {/* todo form */}
       <div className="w-full flex justify-center items-center mt-5">
         <div className="w-2/6">
           <Input type="text" placeholder="Inserisci il task" value={todo.titolo} onChange={e => onChange(e, "titolo")} />
@@ -92,6 +102,7 @@ function Dashboard() {
           <Button title="Submit" onClick={onClick} disabled={disabled} />
         </div>
       </div>
+      {todosTitles}
     </>
   );
 }

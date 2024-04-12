@@ -70,7 +70,7 @@ function Dashboard() {
   if (Array.isArray(todos) && todos.length > 0) {
     todosTitles = todos.map(todo => {
       return (
-        <Card>
+        <Card key={todo.id}>
           <div className="w-full flex items-center">
             <Checkbox onChange={e => onChange(e, "completato", "checkbox")} checked={todo.completato} />
             <div className="flex gap-2 items-center">

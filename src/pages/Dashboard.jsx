@@ -1,6 +1,7 @@
 import { CiLogin as Login } from "react-icons/ci";
 import { useState } from "react";
 import Select from "react-select";
+import { v4 as uuid } from "uuid";
 
 import Header from "../components/Header";
 import Card from "../components/Card";
@@ -17,6 +18,7 @@ const options = [
 function Dashboard() {
   const [todos, setTodos] = useState([]);
   const [todo, setTodo] = useState({
+    id: uuid(),
     titolo: "",
     dataDiScadenza: "",
     priorita: "",
@@ -56,6 +58,7 @@ function Dashboard() {
   function onClick() {
     setTodos([...todos, todo]);
     setTodo({
+      id: uuid(),
       titolo: "",
       dataDiScadenza: "",
       priorita: "",

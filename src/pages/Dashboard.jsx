@@ -32,8 +32,6 @@ function Dashboard() {
     }
   };
 
-  console.log(disabled);
-
   const onChange = (event, key) => {
     // const value = event.target !== undefiend ? event.target.value : event.value;
     let value = "";
@@ -60,7 +58,8 @@ function Dashboard() {
     setTodo({
       titolo: "",
       dataDiScadenza: "",
-      priorita: ""
+      priorita: "",
+      completato: false
     });
   }
 
@@ -70,7 +69,7 @@ function Dashboard() {
       return (
         <Card>
           <div className="w-full flex items-center">
-            <Checkbox />
+            <Checkbox onChange={e => onChange(e, "completato", "checkbox")} checked={todo.completato} />
             <div className="flex gap-2 items-center">
               <h1 className="mr-2 font-bold">{todo.titolo}</h1>
               <span className="relative text-base text-gray-500">
@@ -79,7 +78,7 @@ function Dashboard() {
               </span>
             </div>
             <h6
-              className={`absolute -right-6 -top-3 text-white px-2 py-1 rounded-lg ${
+              className={`absolute -right-6 -top-3 text-white text-sm px-2 py-1 rounded-lg ${
                 todo.priorita === "ALTA" ? "bg-red-500" : todo.priorita === "MEDIA" ? "bg-yellow-500" : "bg-green-500"
               }`}>
               {todo.priorita}
@@ -89,6 +88,8 @@ function Dashboard() {
       );
     });
   }
+
+  console.log(todos);
 
   return (
     <>
@@ -104,7 +105,7 @@ function Dashboard() {
       </Card>
       {/* todo form */}
       <div className="w-full flex justify-center items-center mt-5">
-        <div className="w-2/6">
+        <div className="w-3/6">
           <Input type="text" placeholder="Inserisci il task" value={todo.titolo} onChange={e => onChange(e, "titolo")} />
           <Input type="date" placeholder="Inserisci la data di scadenza" value={todo.dataDiScadenza} onChange={e => onChange(e, "dataDiScadenza")} />
           <Select

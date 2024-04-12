@@ -81,7 +81,14 @@ function Dashboard() {
         <div className="w-2/6">
           <Input type="text" placeholder="Inserisci il task" value={todo.titolo} onChange={e => onChange(e, "titolo")} />
           <Input type="date" placeholder="Inserisci la data di scadenza" value={todo.dataDiScadenza} onChange={e => onChange(e, "dataDiScadenza")} />
-          <Select options={options} placeholder="Scegli la priorita" className="mt-2" onChange={e => onChange(e, "priorita")} isClearable={true} />
+          <Select
+            options={options}
+            value={options.find(option => option.value === todo.priorita) ?? null}
+            placeholder="Scegli la priorita"
+            className="mt-2"
+            onChange={e => onChange(e, "priorita")}
+            isClearable={true}
+          />
           <Button title="Submit" onClick={onClick} disabled={disabled} />
         </div>
       </div>

@@ -68,7 +68,11 @@ function Dashboard() {
     todosTitles = todos.map(todo => {
       return (
         <Card>
-          <h1>{todo.titolo}</h1>
+          <div className=" w-full flex justify-evenly items-center">
+            <h1>{todo.titolo}</h1>
+            <h4>{todo.dataDiScadenza}</h4>
+            <h6 className="absolute -right-6 -top-3">{todo.priorita}</h6>
+          </div>
         </Card>
       );
     });

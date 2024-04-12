@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import Card from "../components/Card";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import Checkbox from "../components/Checkbox";
 
 const options = [
   { value: "ALTA", label: "Alta" },
@@ -68,10 +69,21 @@ function Dashboard() {
     todosTitles = todos.map(todo => {
       return (
         <Card>
-          <div className=" w-full flex justify-evenly items-center">
-            <h1>{todo.titolo}</h1>
-            <h4>{todo.dataDiScadenza}</h4>
-            <h6 className="absolute -right-6 -top-3">{todo.priorita}</h6>
+          <div className="w-full flex items-center">
+            <Checkbox />
+            <div className="flex gap-2 items-center">
+              <h1 className="mr-2 font-bold">{todo.titolo}</h1>
+              <span className="relative text-base text-gray-500">
+                <span className="absolute text-xs left-0 -top-5">Scadenza:</span>
+                {todo.dataDiScadenza}
+              </span>
+            </div>
+            <h6
+              className={`absolute -right-6 -top-3 text-white px-2 py-1 rounded-lg ${
+                todo.priorita === "ALTA" ? "bg-red-500" : todo.priorita === "MEDIA" ? "bg-yellow-500" : "bg-green-500"
+              }`}>
+              {todo.priorita}
+            </h6>
           </div>
         </Card>
       );

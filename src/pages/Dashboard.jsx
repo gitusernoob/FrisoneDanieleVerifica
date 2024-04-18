@@ -55,12 +55,30 @@ function Dashboard() {
     });
   };
 
-  const todosOnChange = id => {
-    setTodos(prevState => {
-      const foundTodo = prevState.find(todo => todo.id === id);
-      foundTodo.completato = !foundTodo.completato;
-      return [...prevState];
-    });
+  const todosOnChange = (todo, operation) => {
+    const { id, ...rest } = todo;
+    if (operation === "checkbox") {
+      setTodos(prevState => {
+        const foundTodo = prevState.find(todo => todo.id === id);
+        foundTodo.completato = !foundTodo.completato;
+        return [...prevState];
+      });
+    }
+    if (operation === "delete") {
+      setTodos(prevState => {
+        const restTodos = prevState.filter(todo => {
+          if (todo.id === id) {
+            return false;
+          } else {
+            return true;
+          }
+        });
+        return [...restTodos];
+      });
+    }
+    if (operation === "edit") {
+      console.log(rest);
+    }
   };
 
   function onClick() {
@@ -84,7 +102,9 @@ function Dashboard() {
           checked={todo.completato}
           dataDiScadenza={todo.dataDiScadenza}
           priorita={todo.priorita}
-          onChange={() => todosOnChange(todo.id)}
+          onChange={() => todosOnChange(todo, "checkbox")}
+          deleteOnClick={() => todosOnChange(todo, "delete")}
+          editOnClick={() => todosOnChange(todo, "edit")}
         />
       );
     });

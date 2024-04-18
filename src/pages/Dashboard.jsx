@@ -86,7 +86,23 @@ function Dashboard() {
   };
 
   function onClick() {
-    setTodos([...todos, todo]);
+    if (buttonTittle === "Submit") {
+      setTodos([...todos, todo]);
+    }
+
+    if (buttonTittle === "Update") {
+      setTodos(prevState => {
+        const newTodos = prevState.map(t => {
+          if (t.id === todo.id) {
+            return todo;
+          }
+          return t;
+        });
+        return newTodos;
+      });
+      setButtonTittle("Submit");
+    }
+
     setTodo({
       id: uuid(),
       titolo: "",
@@ -137,7 +153,6 @@ function Dashboard() {
             placeholder="Scegli la priorita"
             className="mt-2"
             onChange={e => onChange(e, "priorita")}
-            isClearable={true}
           />
           <Button title={buttonTittle} onClick={onClick} disabled={disabled} />
         </div>

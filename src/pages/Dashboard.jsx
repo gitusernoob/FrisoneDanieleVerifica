@@ -7,7 +7,6 @@ import Header from "../components/Header";
 import Card from "../components/Card";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import Checkbox from "../components/Checkbox";
 import TodoCard from "../components/TodoCard";
 
 const options = [
@@ -57,8 +56,11 @@ function Dashboard() {
   };
 
   const todosOnChange = id => {
-    console.log(todos);
-    console.log(id);
+    setTodos(prevState => {
+      const foundTodo = prevState.find(todo => todo.id === id);
+      foundTodo.completato = !foundTodo.completato;
+      return [...prevState];
+    });
   };
 
   function onClick() {
@@ -82,13 +84,11 @@ function Dashboard() {
           checked={todo.completato}
           dataDiScadenza={todo.dataDiScadenza}
           priorita={todo.priorita}
-          onChange={e => onChange}
+          onChange={() => todosOnChange(todo.id)}
         />
       );
     });
   }
-
-  console.log(todos);
 
   return (
     <>

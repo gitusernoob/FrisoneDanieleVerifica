@@ -25,6 +25,7 @@ function Dashboard() {
     completato: false
   });
   const [disabled, setDisabled] = useState(true);
+  const [buttonTittle, setButtonTittle] = useState("Submit");
 
   const formController = todo => {
     if (todo.titolo !== "" && todo.dataDiScadenza !== "" && todo.priorita !== "") {
@@ -56,7 +57,7 @@ function Dashboard() {
   };
 
   const todosOnChange = (todo, operation) => {
-    const { id, ...rest } = todo;
+    const { id } = todo;
     if (operation === "checkbox") {
       setTodos(prevState => {
         const foundTodo = prevState.find(todo => todo.id === id);
@@ -77,7 +78,10 @@ function Dashboard() {
       });
     }
     if (operation === "edit") {
-      console.log(rest);
+      setTodo({
+        ...todo
+      });
+      setButtonTittle("Update");
     }
   };
 
@@ -135,7 +139,7 @@ function Dashboard() {
             onChange={e => onChange(e, "priorita")}
             isClearable={true}
           />
-          <Button title="Submit" onClick={onClick} disabled={disabled} />
+          <Button title={buttonTittle} onClick={onClick} disabled={disabled} />
         </div>
       </div>
       {todosTitles}

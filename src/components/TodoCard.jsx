@@ -24,7 +24,7 @@ function TodoCard(props) {
                 className={`absolute top-10 scale-0 rounded bg-gray-600 p-2 text-white group-hover:scale-100 ${
                   checked ? "line-through decoration-2" : ""
                 }`}>
-                {titolo}trext
+                {titolo}
               </div>
             </div>
             <span className="relative text-base text-gray-500">

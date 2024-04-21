@@ -31,21 +31,23 @@ function Login() {
       <Card>
         <h1 className="text-2xl">Login</h1>
         <hr className="h-1 w-32 bg-dark-green" />
-        {/* email div */}
-        <div className="w-full">
-          <Input type="email" placeholder="example@test.com" value={email} onChange={event => setEmail(event.target.value)} />
-        </div>
-        {/* password div */}
-        <div className="w-full flex relative">
-          <Input type={passwordInputType} placeholder="password" value={password} onChange={handlePasswordChange} />
-          <span className="absolute right-3 top-3.5 cursor-pointer" onClick={changePasswordInputType}>
-            {passwordInputType === "text" ? <HidePassword /> : <ShowPassword />}
-          </span>
-        </div>
-        {/* Button div */}
-        <div className="w-full">
-          <Button title="Login" />
-        </div>
+        <form className="w-full">
+          {/* email div */}
+          <div className="w-full">
+            <Input type="email" placeholder="example@test.com" value={email} onChange={event => setEmail(event.target.value)} />
+          </div>
+          {/* password div */}
+          <div className="w-full flex relative">
+            <Input type={passwordInputType} placeholder="password" value={password} onChange={handlePasswordChange} />
+            <span className="absolute right-3 top-3.5 cursor-pointer" onClick={changePasswordInputType}>
+              {passwordInputType === "text" ? <HidePassword /> : <ShowPassword />}
+            </span>
+          </div>
+          {/* Button div */}
+          <div className="w-full">
+            <Button title="Login" />
+          </div>
+        </form>
       </Card>
     </div>
   );

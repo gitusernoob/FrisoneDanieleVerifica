@@ -9,6 +9,7 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import Card from "../components/Card";
 import Input from "../components/Input";
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
 
@@ -57,8 +58,9 @@ function Signup() {
 
   /* verifica validità input */
 
-
+ 
   const [message, setMessage] = useState("");
+  const navigate = useNavigate(); 
 
   function onClick(e) {
     e.preventDefault();
@@ -66,12 +68,19 @@ function Signup() {
     if(name.length > 2){
       
       if(validazioneEmail(email)){
-        if (password === passwordConfirm && password !== "") {
-          setMessage("");
-        }else if(password === ""){
-          setMessage("inserisci una password");
-        } else if(password !== passwordConfirm  ){
-          setMessage("password diverse")
+        if(validazionePassword(password, passwordConfirm)){
+
+          setMessage("tutto a posto");
+          const userData = {
+            name: name,
+            email: email,
+            password: password 
+          };
+          localStorage.setItem('userData', JSON.stringify(userData)); 
+
+          //naviga alla pagina di Login
+          navigate('/login');
+
         }
       }
 
@@ -81,6 +90,46 @@ function Signup() {
     
   }
 
+  function validazionePassword(password, passwordConfirm){
+    if (password === passwordConfirm && 
+        password !== "" && 
+        password.length>7 && 
+        containsUppercase(password) && 
+        !containsOnlyUppercase(password) &&
+        containsNumber(password)
+    ){
+
+      return true;
+
+    }else if(password === ""){
+      setMessage("inserisci una password");
+    } else if(password !== passwordConfirm  ){
+      setMessage("password diverse")
+    } else if(password.length<8){
+      setMessage("password con meno di 8 caratteri");
+    } else if(!containsUppercase(password)){
+      setMessage("inserisci una lettera maiuscola nella password")
+    } else if(containsOnlyUppercase(password)){
+      setMessage("inserisci una lettera minuscola nella password")
+    } else if(!containsNumber(password)){
+      setMessage("inserisci un numero")
+    }
+    return false;
+  }
+
+
+  function containsUppercase(str) {
+    return /[A-Z]/.test(str);
+  }
+
+  function containsOnlyUppercase(str) {
+    const onlyLetters = str.replace(/\d/g, ''); // Rimuovere i numeri dalla stringa
+    return /^[A-Z]+$/.test(onlyLetters);
+   }
+
+  function containsNumber(str) {
+    return /\d/.test(str);
+  }
 
   function validazioneEmail(email) 
   {

@@ -65,13 +65,14 @@ function Signup() {
 
     if(name.length > 2){
       
-    
-      if (password === passwordConfirm && password !== "") {
-        setMessage("");
-      }else if(password === ""){
-        setMessage("inserisci una password");
-      } else if(password !== passwordConfirm  ){
-        setMessage("password diverse")
+      if(validazioneEmail(email)){
+        if (password === passwordConfirm && password !== "") {
+          setMessage("");
+        }else if(password === ""){
+          setMessage("inserisci una password");
+        } else if(password !== passwordConfirm  ){
+          setMessage("password diverse")
+        }
       }
 
     } else {
@@ -88,12 +89,14 @@ function Signup() {
     // verifico se è un indirizzo valido
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
     {
-      setMessage("L'indirizzo email che hai inserito e' valido")
+      setMessage("")
+      return true;
     }
     else {
       setMessage("L'indirizzo email che hai inserito non e' valido");
+      return false;
     }
-    return false;
+    
   }
 
   return (
